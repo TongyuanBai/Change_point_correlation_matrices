@@ -82,3 +82,33 @@ for subdirectory in os.listdir(base_path_input):
 
             # Save the computed distance matrix to a file
             np.savetxt(output_file, distance_matrix, delimiter=',')  
+            
+base_path_input = 'E:/Project/dataset_nnl/'
+base_path_output = 'E:/Project/distance_matrix/Log_Euclidean_Cholesky_nnl'
+window_size1 = 10
+
+# List all subdirectories
+for subdirectory in os.listdir(base_path_input):
+    subdirectory_path_input = os.path.join(base_path_input, subdirectory)
+    if os.path.isdir(subdirectory_path_input):
+        # Create a corresponding subdirectory in the output base path
+        subdirectory_path_output = os.path.join(base_path_output, subdirectory)
+        os.makedirs(subdirectory_path_output, exist_ok=True)
+        
+        # Process all files in this subdirectory
+        for i in range(50): 
+            input_file = os.path.join(subdirectory_path_input, f'time_series_{i}.csv')
+            output_file = os.path.join(subdirectory_path_output, f'distance_matrix_{i}.csv')
+
+            # Load time series
+            combined_time_series = np.genfromtxt(input_file, delimiter=',')
+
+            # Calculate correlation matrices
+            correlation_matrices = calculate_correlation_matrix(combined_time_series, window_size1)
+
+            normalized_log_matrices = calculate_normalized_log_matrices(correlation_matrices)
+            
+            distance_matrix = calculate_distance_matrix(normalized_log_matrices)
+
+            # Save distance matrix
+            np.savetxt(output_file, distance_matrix, delimiter=',')  

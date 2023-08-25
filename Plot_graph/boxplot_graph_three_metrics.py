@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import numpy as np
 
 # Set extraction directory
 extraction_dir = "E:/Project/Result"
@@ -50,7 +51,7 @@ for index, key in enumerate(custom_order):
     # Combine k and source columns for the x-axis
     dataframe['x_value'] = dataframe['k'].astype(str) + "-" + dataframe['source']
     melted_df = dataframe.melt(id_vars=['x_value'], value_vars=metrics)
-    
+    melted_df['value'] = np.log(melted_df['value'])
     # Plotting
     sns.boxplot(data=melted_df, x='x_value', y='value', hue='variable', order=x_order, palette=sci_palette, ax=ax)
 
@@ -61,7 +62,7 @@ for index, key in enumerate(custom_order):
     ax.set_xticklabels(x_order, rotation=45, fontsize=11)
     ax.set_yticks(ax.get_yticks())
     ax.set_yticklabels(ax.get_yticks(), fontsize=11)
-    ax.set_xlabel("Graphics", fontsize=11)
+    ax.set_xlabel("Graphs", fontsize=11)
     ax.set_ylabel("Log Scale MAE", fontsize=11)
     ax.legend([],[], frameon=False)
 
@@ -78,6 +79,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+import numpy as np
 
 # Set extraction directory
 extraction_dir = "E:/Project/Result"
@@ -121,18 +123,17 @@ for index, key in enumerate(custom_order):
     # Combine k and source columns for the x-axis
     dataframe['x_value'] = dataframe['k'].astype(str) + "-" + dataframe['source']
     melted_df = dataframe.melt(id_vars=['x_value'], value_vars=metrics)
-    
+    melted_df['value'] = np.log(melted_df['value'])
     # Plotting
     sns.boxplot(data=melted_df, x='x_value', y='value', hue='variable', order=x_order, palette=sci_palette, ax=ax)
 
     # Set titles, labels, and scale
     ax.set_title(custom_titles[index], fontsize=12)
-    ax.set_yscale("log")
     ax.set_xticks(range(len(x_order)))
     ax.set_xticklabels(x_order, rotation=45, fontsize=11)
     ax.set_yticks(ax.get_yticks())
     ax.set_yticklabels(ax.get_yticks(), fontsize=11)
-    ax.set_xlabel("Graphics", fontsize=11)
+    ax.set_xlabel("Graphs", fontsize=11)
     ax.set_ylabel("Log Scale MAE", fontsize=11)
     ax.legend([],[], frameon=False)
 
@@ -146,6 +147,7 @@ plt.show()
 
 ################################################
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
@@ -192,18 +194,18 @@ for index, key in enumerate(custom_order):
     # Combine k and source columns for the x-axis
     dataframe['x_value'] = dataframe['k'].astype(str) + "-" + dataframe['source']
     melted_df = dataframe.melt(id_vars=['x_value'], value_vars=metrics)
+    melted_df['value'] = np.log(melted_df['value'])
     
     # Plotting
     sns.boxplot(data=melted_df, x='x_value', y='value', hue='variable', order=x_order, palette=sci_palette, ax=ax)
 
     # Set titles, labels, and scale
     ax.set_title(custom_titles[index], fontsize=12)
-    ax.set_yscale("log")
     ax.set_xticks(range(len(x_order)))
     ax.set_xticklabels(x_order, rotation=45, fontsize=11)
     ax.set_yticks(ax.get_yticks())
     ax.set_yticklabels(ax.get_yticks(), fontsize=11)
-    ax.set_xlabel("Graphics", fontsize=11)
+    ax.set_xlabel("Graphs", fontsize=11)
     ax.set_ylabel("Log Scale MAE", fontsize=11)
     ax.legend([],[], frameon=False)
 

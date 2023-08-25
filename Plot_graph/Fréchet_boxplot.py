@@ -28,9 +28,11 @@ def extract_data(extract_dir):
 # Function to plot the extracted data
 def plot_data_with_borders(data_list, ordered_x_labels, color, legend_label):
     plt.figure(figsize=(6, 4))
-
+    
+    log_transformed_data = [np.log(data) for data in data_list]
+    
     # Create a boxplot with custom colors and styles
-    box_plot = plt.boxplot(data_list, vert=True, patch_artist=True, 
+    box_plot = plt.boxplot(log_transformed_data, vert=True, patch_artist=True, 
                            capprops=dict(color='black'),
                            whiskerprops=dict(color='black'),
                            flierprops=dict(color='black', markeredgecolor='black'),
@@ -38,10 +40,7 @@ def plot_data_with_borders(data_list, ordered_x_labels, color, legend_label):
                            labels=ordered_x_labels)
     for patch in box_plot['boxes']:
         patch.set_facecolor(color)
-
-    # Set the y-axis to a logarithmic scale
-    plt.yscale("log")
-
+        
     # Set labels and font sizes
     plt.xticks(rotation=45, fontsize=11)
     plt.ylabel("Log Scale MAE", fontsize=11)
@@ -65,9 +64,9 @@ data_list_original = extract_data("E:/Project/Result/Frechet_euclidean_ori")
 data_list_new = extract_data("E:/Project/Result/Frechet_log_euclidean_ori")
 
 # Order the extracted data based on the cases
-ordered_data_list_original = [data_list_original[i-1] for i in [1, 4, 7, 2, 5, 8, 3, 6, 9]]
-ordered_data_list_new = [data_list_new[i-1] for i in [1, 4, 7, 2, 5, 8, 3, 6, 9]]
-ordered_x_labels = [f"Case{i}" for i in [1, 4, 7, 2, 5, 8, 3, 6, 9]]
+ordered_data_list_original = [data_list_original[i-1] for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+ordered_data_list_new = [data_list_new[i-1] for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]]
+ordered_x_labels = [f"Case{i}" for i in [1, 2, 3, 4, 5, 6, 7, 8, 9]]
 
 # Define a common color for the plots
 common_color_blue = "#003366"

@@ -3,7 +3,6 @@
 Graph method with three metrices in EEG
 """
 
-import zipfile
 import os
 import pandas as pd
 

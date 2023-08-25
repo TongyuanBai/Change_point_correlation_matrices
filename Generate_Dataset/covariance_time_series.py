@@ -7,12 +7,15 @@ import numpy as np
 from tqdm import tqdm
 
 # Simulate a covariance matrix
+# Define the fixed eigenvector
+np.random.seed(42)
+fixed_eigenvectors = np.random.rand(5, 5)
+q_fixed, _ = np.linalg.qr(fixed_eigenvectors)
+
 def simulate_covariance_matrix(n, eigenvalue_range=(0.1, 1)):
     eigenvalues = np.random.uniform(*eigenvalue_range, size=n)
     eigenvalues.sort()
-    eigenvectors = np.random.rand(n, n)
-    q, _ = np.linalg.qr(eigenvectors)
-    covariance_matrix = q @ np.diag(eigenvalues) @ q.T
+    covariance_matrix = q_fixed[:, :n] @ np.diag(eigenvalues) @ q_fixed[:, :n].T
     return covariance_matrix
 
 # Generate a time series based on covariance matrix

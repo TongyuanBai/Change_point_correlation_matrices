@@ -98,7 +98,7 @@ def calculate_mae(actual, predicted):
 
 # Paths for data and results
 data_folder_path = "E:/Project/dataset"
-results_folder_path = "E:/Project/Result/Frechet_euclidean"
+results_folder_path = "E:/Project/Result/Frechet_euclidean_ori"
 
 # Define true values and folders
 true_values = {"case_0_eigen_0.1_1": 100, 
