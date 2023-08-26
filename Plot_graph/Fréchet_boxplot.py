@@ -13,14 +13,10 @@ def extract_data(extract_dir):
     folder_content = os.listdir(extract_dir)
     folder_content.sort()
 
-    # List and sort the contents of the subdirectory
-    subfolder_content = os.listdir(os.path.join(extract_dir, os.path.basename(extract_dir)))
-    subfolder_content.sort()
-
     # Extract MAE values from the CSV files and append to a list
     data_list = []
-    for folder in subfolder_content:
-        file_path = os.path.join(extract_dir, os.path.basename(extract_dir), folder, "mae_results.csv")
+    for folder in folder_content:
+        file_path = os.path.join(extract_dir, folder, "mae_results.csv")
         data = pd.read_csv(file_path)
         data_list.append(data["MAE"].values)
     return data_list
