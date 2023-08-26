@@ -154,7 +154,6 @@ for idx, (custom_order, custom_titles) in enumerate(combinations):
         sns.boxplot(data=combined_melted, x='x_value', y='value', hue='variable', order=x_order, palette=sci_palette, ax=ax)
         
         ax.set_title(custom_titles[index], fontsize=11)
-        ax.set_yscale("log")
         ax.set_xticks(range(len(x_order)))
         ax.set_xticklabels(x_order, rotation=45, fontsize=11)
         ax.set_yticklabels(ax.get_yticks(), fontsize=11)
