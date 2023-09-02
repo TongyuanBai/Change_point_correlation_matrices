@@ -1,6 +1,6 @@
 # Change Point for Correlation Matrices
 ## Introduction 
-This project proposed two change point detection method for correlation matrices with three different metrics. The aim of project is to find the accurate location of change point.
+This project proposed two change point detection methods for correlation matrices with three different metrics. The aim of project is to find the accurate location of change point.
 ## Software
 - Python 3.8
 - R Studio 4.2.0
@@ -12,7 +12,7 @@ This part I will introduce the function of each code file. This repository inclu
 This folder includes two code files. The name of file covariance_time_series.py is used to generate the time series data. It generate nine different cases which the combination of location of change point and the eigenvalue are all different. Another file called generate_for_nnl_graph_method.py is to construct NNG graph for Graph-based change point detection method.
 
 ### Fréchet_two_metrics
-This folder includes two folders, Euclidean and Log_Euclidean. In each subfolder, it include one code file that describe how to apply Fréchet-based method with Euclidean-Cholesky metrics or Log-Euclidean-Cholesky metrics. In both code file, I defined the function of calculating Fréchet with two different metrics. As for result, I save the location of change point and the results of MAE values. 
+This folder includes two folders, Euclidean and Log_Euclidean. In each subfolder, it include one code file that describe how to apply Fréchet-based method with Euclidean-Cholesky metrics or Log-Euclidean-Cholesky metrics. In both code file, we defined the function of calculating Fréchet moments with two different metrics. As for result, we save the location of change point and the results of MAE values. 
 
 ### Graph_three_metrics
 This folder includes three folders, Poly_Hyperbolic, Euclidean and Log_Euclidean. Each subfolder includes two code files. For example, the name of fill called Euclidean-Cholesky.py is to calculate the distance matrix among all correlation matrices. Then, the name of Euclidean-Cholesky detection.R is to construce the types of graph and find the location of change point. Finally, we save the results of MAE values of the combinations of value of k and the types of graph.
